@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Funnel Health</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 2rem;
+        }
+        .chart-container {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 90%;
+            max-width: 1000px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sales Funnel Health</h1>
+
+    <div class="chart-container">
+        <canvas id="salesFunnelChart"></canvas>
+    </div>
+
+    <script>
+        // Mock Data (Enriched from CRM & Gong)
+        const annualSalesData = [
+            { month: 'January', pipeline: { newLeads: 500, newOpportunities: 100 } },
+            { month: 'February', pipeline: { newLeads: 520, newOpportunities: 110 } },
+            { month: 'March', pipeline: { newLeads: 580, newOpportunities: 120 } },
+            { month: 'April', pipeline: { newLeads: 550, newOpportunities: 115 } },
+            { month: 'May', pipeline: { newLeads: 600, newOpportunities: 130 } },
+            { month: 'June', pipeline: { newLeads: 620, newOpportunities: 140 } },
+            { month: 'July', pipeline: { newLeads: 650, newOpportunities: 150 } },
+            { month: 'August', pipeline: { newLeads: 630, newOpportunities: 145 } },
+            { month: 'September', pipeline: { newLeads: 680, newOpportunities: 160 } },
+            { month: 'October', pipeline: { newLeads: 700, newOpportunities: 170 } },
+            { month: 'November', pipeline: { newLeads: 670, newOpportunities: 155 } },
+            { month: 'December', pipeline: { newLeads: 720, newOpportunities: 180 } },
+        ];
+
+        // Chart.js Visualization
+        const ctx = document.getElementById('salesFunnelChart').getContext('2d');
+        const labels = annualSalesData.map(data => data.month);
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'New Leads',
+                        data: annualSalesData.map(data => data.pipeline.newLeads),
+                        borderColor: 'rgb(54, 162, 235)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'New Opportunities',
+                        data: annualSalesData.map(data => data.pipeline.newOpportunities),
+                        borderColor: 'rgb(255, 159, 64)',
+                        backgroundColor: 'rgba(255, 159, 64, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Lead and Opportunity Generation',
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

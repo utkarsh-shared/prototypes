@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proponent</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #0d9276;
+            --text-color: #333;
+            --secondary-text-color: #555;
+            --background-color: #fff;
+            --border-color: #eaeaea;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo svg {
+            margin-right: 8px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--secondary-text-color);
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links .solutions-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            margin-left: 30px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0b7a61;
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #c7ecee;
+            border-radius: 16px;
+            color: var(--primary-color);
+            background-color: #f1f9f7;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            color: var(--secondary-text-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #0b7a61;
+            transform: translateY(-2px);
+        }
+
+        /* --- Partners Section --- */
+        .partners {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .partners h2 {
+            font-size: 14px;
+            color: var(--secondary-text-color);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+        
+        .partner-logos img {
+            max-height: 35px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .partner-logos img:hover {
+            opacity: 1;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 100px 20px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            margin-bottom: 120px;
+        }
+        
+        .feature:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .feature-text {
+            flex: 1;
+            max-width: 450px;
+        }
+        
+        .feature-text .subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-text h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-text p {
+            font-size: 18px;
+            color: var(--secondary-text-color);
+        }
+        
+        .feature-image {
+            flex: 1;
+            max-width: 550px;
+        }
+        
+        .feature-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        /* --- FAQ Section --- */
+        .faq-section {
+            padding: 80px 20px;
+            background-color: #fafafa;
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+        
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .faq-question .icon {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question .icon::before {
+            content: '+';
+            font-size: 18px;
+            color: #888;
+        }
+        
+        .faq-item.active .faq-question .icon::before {
+            content: '−';
+        }
+        
+        .faq-item.active .faq-question .icon {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .faq-item.active .faq-question .icon::before {
+            color: white;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            color: var(--secondary-text-color);
+            padding-top: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust as needed */
+            padding-top: 15px;
+        }
+
+        /* --- Still have questions Section --- */
+        .contact-prompt {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .contact-prompt .icon-container {
+            width: 60px;
+            height: 60px;
+            background-color: #e6f5f2;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .contact-prompt h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-prompt p {
+            color: var(--secondary-text-color);
+            margin-bottom: 30px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            padding: 30px 40px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #888;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Scroll Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="14" r="13" stroke="#0D9276" stroke-width="2"/>
+                <circle cx="14" cy="14" r="7" stroke="#0D9276" stroke-width="2"/>
+            </svg>
+            Proponent
+        </div>
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="#" class="solutions-link">Solutions <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li><a href="#">Case Studies</a></li>
+                <li><a href="#">Pricing</a></li>
+            </ul>
+            <a href="#" class="btn btn-primary">Contact Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero reveal">
+            <span class="hero-badge">Proponent for Quality Assurance</span>
+            <h1>Monitor, Analyze, and Automate Every Customer Interaction</h1>
+            <p>Review 100% of calls, detect compliance risks, uncover customer insights, and trigger post-call actions — all from one intelligent platform.</p>
+            <a href="#" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V5C19 3.89543 18.1046 3 17 3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8V16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 12H16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                See how it works
+            </a>
+        </section>
+
+        <section class="partners reveal">
+            <div class="container">
+                <h2>Our Customers & Partners</h2>
+                <div class="partner-logos">
+                    <img src="https://i.imgur.com/uRjZz2u.png" alt="PAXAFE">
+                    <img src="https://i.imgur.com/h9yV3T6.png" alt="unifize">
+                    <img src="https://i.imgur.com/dK3f94m.png" alt="Pulley">
+                    <img src="https://i.imgur.com/8x2A58q.png" alt="PROCUROS">
+                </div>
+            </div>
+        </section>
+
+        <section class="features container">
+            <div class="feature reveal">
+                <div class="feature-text">
+                    <p class="subtitle">Automated Compliance Monitoring</p>
+                    <h3>Identify risk before it becomes a reportable issue</h3>
+                    <p>Monitor every call for disclosure gaps, policy breaches, or sensitive phrases — ensuring full compliance across customer interactions.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="https://i.imgur.com/Y1gC5kQ.png" alt="Compliance Monitoring Dashboard">
+                </div>
+            </div>
+            <div class="feature reveal">
+                <div class="feature-text">
+                    <p class="subtitle">Voice-of-Customer Insights</p>
+                    <h3>Understand what your customers are really saying — at scale</h3>
+                    <p>Analyze calls to uncover reasons for churn, rejection, or dissatisfaction, summarized in visual dashboards and weekly reports.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="https://i.imgur.com/c1i4n6m.png" alt="Customer Insights Dashboard">
+                </div>
+            </div>
+            <div class="feature reveal">
+                <div class="feature-text">
+                    <p class="subtitle">Agentic Actions & Workflows</p>
+                    <h3>Go beyond insights — drive outcomes automatically</h3>
+                    <p>Auto-generate post-call summaries, follow-up recommendations, and battlecards — reducing manual work and response time.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="https://i.imgur.com/L1n7T0U.png" alt="Agent Actions Workflow">
+                </div>
+            </div>
+            <div class="feature reveal">
+                <div class="feature-text">
+                    <p class="subtitle">Seamless Enterprise Integrations</p>
+                    <h3>Connect with the systems you already use</h3>
+                    <p>Sync data with Salesforce, Genesys, and other CRMs for unified QA, compliance, and customer intelligence in one place.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="https://i.imgur.com/mD3UeJk.png" alt="Integration with other systems">
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section reveal">
+            <div class="container">
+                <h2>Frequently asked questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How much does Proponent cost?</span>
+                            <span class="icon"></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can try us for free for 30 days. If you want, we'll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How is Proponent different from other conversational intelligence tools like Gong or Chorus?</span>
+                            <span class="icon"></span>
+                        </div>
+                         <div class="faq-answer">
+                            <p>Proponent offers advanced AI-powered compliance monitoring and automated workflows that go beyond simple conversation analysis, providing actionable insights and driving real outcomes.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What kind of implementation is required to get started? How long does it take?</span>
+                            <span class="icon"></span>
+                        </div>
+                         <div class="faq-answer">
+                            <p>Implementation is straightforward. After a quick setup and integration with your existing systems, you can be up and running within a few days. Our team provides full support during the process.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can other info be added to an invoice?</span>
+                            <span class="icon"></span>
+                        </div>
+                         <div class="faq-answer">
+                            <p>Yes, we can customize invoices to include additional information such as purchase order numbers or specific department details. Please contact our billing team to make arrangements.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do you ensure our sensitive sales data is secure?</span>
+                            <span class="icon"></span>
+                        </div>
+                         <div class="faq-answer">
+                            <p>We take data security very seriously. Proponent uses industry-standard encryption, complies with major data protection regulations, and employs robust security measures to protect your data at all times.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I change my account email?</span>
+                            <span class="icon"></span>
+                        </div>
+                         <div class="faq-answer">
+                            <p>You can change your account email in your profile settings. If you encounter any issues, our support team is ready to assist you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-prompt reveal">
+            <div class="icon-container">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="14" cy="14" r="13" stroke="#0D9276" stroke-width="2"/>
+                    <circle cx="14" cy="14" r="7" stroke="#0D9276" stroke-width="2"/>
+                </svg>
+            </div>
+            <h3>Still have questions?</h3>
+            <p>Can't find the answer you're looking for? Please chat to our friendly team.</p>
+            <a href="#" class="btn btn-primary">Get in touch</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <span>© 2024 Proponent Inc. All rights reserved.</span>
+        <div class="social-links">
+            <a href="#">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0H5C2.239 0 0 2.239 0 5V19C0 21.761 2.239 24 5 24H19C21.761 24 24 21.761 24 19V5C24 2.239 21.761 0 19 0ZM8 19H5V8H8V19ZM6.5 6.732C5.534 6.732 4.75 5.942 4.75 4.968C4.75 3.994 5.534 3.204 6.5 3.204C7.466 3.204 8.25 3.994 8.25 4.968C8.25 5.942 7.467 6.732 6.5 6.732ZM20 19H17V13.396C17 10.028 16.521 8 14.273 8C12.025 8 11.5 9.761 11.5 11.396V19H8.5V8H11.5V9.5H11.554C12.004 8.583 13.298 7.5 15.424 7.5C18.988 7.5 20 9.803 20 12.831V19Z"/></svg>
+            </a>
+             <a href="#">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457c-.885.392-1.83.658-2.825.775.012-.008.02-.02.034-.03C22.258 5.513 23.01 4.45 23.36 3.26c-1.005.594-2.117.98-3.29 1.258C18.96 3.39 17.297 2.75 15.49 2.75c-3.418 0-6.192 2.774-6.192 6.192 0 .484.055.955.16 1.406-5.148-.26-9.71-2.72-12.77-6.48C.084 4.88-.06 5.87.202 6.84c1.6.814 3.012 2.11 3.82 3.73-.78-.025-1.52-.238-2.18-.59v.08c0 2.22 1.58 4.07 3.67 4.5-.38.104-.78.16-1.19.16-.29 0-.58-.028-.86-.08.58 1.82 2.27 3.14 4.27 3.18-1.57 1.23-3.56 1.96-5.71 1.96-.37 0-.74-.022-1.1-.065 2.03 1.3 4.45 2.06 7.03 2.06 8.44 0 13.06-7 13.06-13.06 0-.2 0-.4-.015-.6.89-.64 1.67-1.45 2.29-2.38z"/></svg>
+            </a>
+            <a href="#">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.82 3H2.18A2.18 2.18 0 0 0 0 5.18v13.64A2.18 2.18 0 0 0 2.18 21h19.64A2.18 2.18 0 0 0 24 18.82V5.18A2.18 2.18 0 0 0 21.82 3zM7.5 17H5V7h2.5zm-1.25-11.2A1.56 1.56 0 1 1 7.8 4.25a1.56 1.56 0 0 1-1.55-1.45zM19 17h-2.5v-4.5c0-1.06-.02-2.42-1.47-2.42s-1.7 1.15-1.7 2.34V17H11V7h2.38v1.09h.03c.33-.63 1.15-1.3 2.34-1.3C18.27 6.8 19 8.5 19 10.97z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // --- FAQ Accordion ---
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                faqItems.forEach(i => i.classList.remove('active'));
+
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // --- Load on Scroll Animation ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150; // distance from bottom of screen to start reveal
+
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('visible');
+                } else {
+                    // Optional: remove class to re-trigger animation on scroll up
+                    // el.classList.remove('visible'); 
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Initial check in case elements are already in view on load
+        revealOnScroll();
+
+    </script>
+</body>
+</html>

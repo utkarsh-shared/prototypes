@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Questions Analysis</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #17a2b8;
+            margin-bottom: 40px;
+        }
+        .question-accordion .question-item {
+            border-bottom: 1px solid #dee2e6;
+        }
+        .question-header {
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        .question-count {
+            background-color: #17a2b8;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0052cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+        <h1>Top 5 Customer Questions (Last 3 Months)</h1>
+        <div class="question-accordion">
+            <div class="question-item">
+                <div class="question-header">
+                    <span>How does your pricing work?</span>
+                    <span class="question-count">980 times</span>
+                </div>
+            </div>
+            <div class="question-item">
+                <div class="question-header">
+                    <span>What does the implementation process look like?</span>
+                    <span class="question-count">750 times</span>
+                </div>
+            </div>
+            <div class="question-item">
+                <div class="question-header">
+                    <span>How do you compare to [Competitor X]?</span>
+                    <span class="question-count">620 times</span>
+                </div>
+            </div>
+            <div class="question-item">
+                <div class="question-header">
+                    <span>What kind of support do you offer?</span>
+                     <span class="question-count">480 times</span>
+                </div>
+            </div>
+            <div class="question-item">
+                <div class="question-header">
+                    <span>Can you explain your security measures?</span>
+                    <span class="question-count">290 times</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

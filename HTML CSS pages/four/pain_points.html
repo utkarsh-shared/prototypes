@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Pain Points Analysis</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #0052cc;
+            margin-bottom: 40px;
+        }
+        .bar-chart {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+        }
+        .bar-label {
+            width: 25%;
+            font-weight: 600;
+        }
+        .bar-container {
+            width: 75%;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+        }
+        .bar {
+            height: 30px;
+            background-color: #0052cc;
+            border-radius: 4px;
+            text-align: right;
+            padding-right: 10px;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0052cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+        <h1>Top 5 Customer Pain Points (Last 3 Months)</h1>
+        <div class="bar-chart">
+            <div class="bar-item">
+                <div class="bar-label">High Cost / Budget Constraints</div>
+                <div class="bar-container">
+                    <div class="bar" style="width: 92%;">450 mentions</div>
+                </div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-label">Integration Complexity</div>
+                <div class="bar-container">
+                    <div class="bar" style="width: 78%;">320 mentions</div>
+                </div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-label">Lack of Specific Features</div>
+                <div class="bar-container">
+                    <div class="bar" style="width: 65%;">215 mentions</div>
+                </div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-label">Poor User Experience</div>
+                <div class="bar-container">
+                    <div class="bar" style="width: 50%;">180 mentions</div>
+                </div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-label">Time-consuming Implementation</div>
+                <div class="bar-container">
+                    <div class="bar" style="width: 42%;">119 mentions</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

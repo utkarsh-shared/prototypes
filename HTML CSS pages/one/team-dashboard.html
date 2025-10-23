@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Performance Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --text-muted: #6c757d;
+            --accent-blue: #0d6efd;
+            --accent-green: #198754;
+            --accent-red: #dc3545;
+            --accent-yellow: #ffc107;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .header-subtext {
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .grid-4-cols {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .grid-2-cols {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        .kpi-card h3 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin: 0;
+        }
+        .kpi-card p {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0.5rem 0 0 0;
+        }
+        .chart-placeholder {
+            background-color: #e9ecef;
+            border-radius: 0.25rem;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        tbody tr:hover {
+            background-color: var(--bg-color);
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .tag-red {
+            background-color: #ffe3e3;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Team Performance Dashboard</h1>
+            <p class="header-subtext">Q4 2025 Overview</p>
+        </header>
+
+        <!-- Key Metrics -->
+        <section class="grid grid-4-cols" style="margin-bottom: 2rem;">
+            <div class="card kpi-card">
+                <h3>Total Calls</h3>
+                <p>1,245</p>
+            </div>
+            <div class="card kpi-card">
+                <h3>Avg. Call Duration</h3>
+                <p>8m 15s</p>
+            </div>
+            <div class="card kpi-card">
+                <h3>Deals Closed</h3>
+                <p>78</p>
+            </div>
+            <div class="card kpi-card">
+                <h3>Win Rate</h3>
+                <p>23%</p>
+            </div>
+        </section>
+
+        <!-- Charts -->
+        <section class="grid grid-2-cols" style="margin-bottom: 2rem;">
+            <div class="card">
+                <h2>Deal Outcomes</h2>
+                <div class="chart-placeholder">[Donut Chart: 78 Won / 45 Lost / 180 Pipeline]</div>
+            </div>
+            <div class="card">
+                <h2>Weekly Team Activity</h2>
+                <div class="chart-placeholder">[Stacked Bar Chart: Calls, Emails, Meetings]</div>
+            </div>
+        </section>
+
+        <!-- Tables -->
+        <section class="grid grid-2-cols">
+            <div class="card">
+                <h2>Rep Leaderboard</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rep Name</th>
+                            <th>Deals Closed</th>
+                            <th>Talk Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Sarah Jones</td><td>12</td><td>65%</td></tr>
+                        <tr><td>Michael Chen</td><td>10</td><td>58%</td></tr>
+                        <tr><td>Priya Patel</td><td>9</td><td>72%</td></tr>
+                        <tr><td>David Miller</td><td>8</td><td>55%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h2>Deals at Risk</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th>Issue</th>
+                            <th>Last Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Quantum Leap Inc.</td><td><span class="tag tag-red">Competitor</span></td><td>3 days ago</td></tr>
+                        <tr><td>Innovate Solutions</td><td><span class="tag tag-red">Low Engagement</span></td><td>5 days ago</td></tr>
+                        <tr><td>NextGen Systems</td><td><span class="tag tag-red">Pricing</span></td><td>2 days ago</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

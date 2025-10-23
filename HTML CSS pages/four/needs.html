@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Needs Analysis</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #28a745;
+            margin-bottom: 40px;
+        }
+        .needs-list {
+            list-style: none;
+            padding: 0;
+        }
+        .need-item {
+            background-color: #f8f9fa;
+            border-left: 5px solid #28a745;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .need-text {
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        .need-count {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #28a745;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0052cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+        <h1>Top 5 Customer Needs Identified (Last 3 Months)</h1>
+        <ul class="needs-list">
+            <li class="need-item">
+                <span class="need-text">Desire for Improved Efficiency</span>
+                <span class="need-count">350 mentions</span>
+            </li>
+            <li class="need-item">
+                <span class="need-text">Need for Better Data & Analytics</span>
+                <span class="need-count">280 mentions</span>
+            </li>
+            <li class="need-item">
+                <span class="need-text">Requirement for Scalability</span>
+                <span class="need-count">195 mentions</span>
+            </li>
+            <li class="need-item">
+                <span class="need-text">Demand for Enhanced Security</span>
+                <span class="need-count">153 mentions</span>
+            </li>
+            <li class="need-item">
+                <span class="need-text">Request for Simplified Workflow</span>
+                <span class="need-count">100 mentions</span>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

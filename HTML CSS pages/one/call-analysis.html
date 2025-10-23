@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Call Analysis</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --text-muted: #6c757d;
+            --accent-blue: #0d6efd;
+            --speaker-rep: var(--accent-blue);
+            --speaker-client: #343a40;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .header-subtext {
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        .player-placeholder {
+            background-color: #343a40;
+            color: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        .timeline {
+            width: 100%;
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            margin-top: 1rem;
+            position: relative;
+        }
+        .timeline-progress {
+            width: 60%;
+            height: 100%;
+            background-color: var(--accent-blue);
+            border-radius: 4px;
+        }
+        .transcript {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+        .transcript-entry {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+        .speaker {
+            font-weight: 600;
+            flex-shrink: 0;
+            width: 80px;
+        }
+        .speaker.rep { color: var(--speaker-rep); }
+        .speaker.client { color: var(--speaker-client); }
+        .transcript-text {
+            color: #495057;
+            line-height: 1.6;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .topic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tag {
+            background-color: #e7f1ff;
+            color: #0d6efd;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .action-items {
+            list-style-type: '✓';
+            padding-left: 1.5rem;
+        }
+        .action-items li {
+            padding-left: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Call Analysis: Quantum Leap Inc.</h1>
+            <p class="header-subtext">With David Miller on October 10, 2025 (25m 40s)</p>
+        </header>
+
+        <div class="layout-grid">
+            <main>
+                <div class="card" style="margin-bottom: 2rem;">
+                    <h2>Call Recording</h2>
+                    <div class="player-placeholder">
+                        [ Simulated Audio Player Controls ]
+                    </div>
+                    <div class="timeline"><div class="timeline-progress"></div></div>
+                </div>
+                <div class="card">
+                    <h2>Transcript</h2>
+                    <div class="transcript">
+                        <div class="transcript-entry">
+                            <div class="speaker rep">Rep (00:15)</div>
+                            <p class="transcript-text">Thanks for joining today. To start, could you walk me through your current process?</p>
+                        </div>
+                        <div class="transcript-entry">
+                            <div class="speaker client">Client (00:45)</div>
+                            <p class="transcript-text">Sure. We're currently using a mix of spreadsheets and another tool, but it's not scaling well for us.</p>
+                        </div>
+                         <div class="transcript-entry">
+                            <div class="speaker client">Client (08:55)</div>
+                            <p class="transcript-text">That sounds interesting. How does your <mark>pricing</mark> model work?</p>
+                        </div>
+                        <div class="transcript-entry">
+                            <div class="speaker client">Client (18:10)</div>
+                            <p class="transcript-text">We are also evaluating <mark>Competitor X</mark>. How do you differ?</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <aside class="sidebar">
+                <div class="card">
+                    <h2>Key Topics</h2>
+                    <div class="topic-tags">
+                        <span class="tag">Pricing</span>
+                        <span class="tag">Competitor X</span>
+                        <span class="tag">Timeline</span>
+                        <span class="tag">Security</span>
+                    </div>
+                </div>
+                 <div class="card">
+                    <h2>Action Items</h2>
+                    <ul class="action-items">
+                        <li>Send follow-up with security whitepaper.</li>
+                        <li>Schedule technical demo for next week.</li>
+                        <li>Provide quote for the enterprise package.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>Call Metrics</h2>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                        <li style="display: flex; justify-content: space-between;"><span>Talk/Listen Ratio:</span> <strong>45% / 55%</strong></li>
+                        <li style="display: flex; justify-content: space-between;"><span>Longest Monologue:</span> <strong>1m 15s (Rep)</strong></li>
+                        <li style="display: flex; justify-content: space-between;"><span>Questions Asked:</span> <strong>12</strong></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>

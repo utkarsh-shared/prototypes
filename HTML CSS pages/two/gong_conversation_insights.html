@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gong Conversation Insights</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 2rem;
+        }
+        .chart-container {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px; /* Doughnut charts look better in a square-ish container */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gong Conversation Insights</h1>
+
+    <div class="chart-container">
+        <canvas id="gongInsightsChart"></canvas>
+    </div>
+
+    <script>
+        // Mock Data (Enriched from CRM & Gong)
+        const annualSalesData = [
+            { month: 'January', gongInsights: { competitorMentions: { 'Competitor A': 15, 'Competitor B': 8, 'Competitor C': 5 } } },
+            { month: 'February', gongInsights: { competitorMentions: { 'Competitor A': 18, 'Competitor B': 10, 'Competitor C': 6 } } },
+            { month: 'March', gongInsights: { competitorMentions: { 'Competitor A': 20, 'Competitor B': 12, 'Competitor C': 7 } } },
+            { month: 'April', gongInsights: { competitorMentions: { 'Competitor A': 17, 'Competitor B': 11, 'Competitor C': 8 } } },
+            { month: 'May', gongInsights: { competitorMentions: { 'Competitor A': 22, 'Competitor B': 14, 'Competitor C': 9 } } },
+            { month: 'June', gongInsights: { competitorMentions: { 'Competitor A': 25, 'Competitor B': 16, 'Competitor C': 10 } } },
+            { month: 'July', gongInsights: { competitorMentions: { 'Competitor A': 28, 'Competitor B': 18, 'Competitor C': 11 } } },
+            { month: 'August', gongInsights: { competitorMentions: { 'Competitor A': 26, 'Competitor B': 17, 'Competitor C': 12 } } },
+            { month: 'September', gongInsights: { competitorMentions: { 'Competitor A': 30, 'Competitor B': 20, 'Competitor C': 14 } } },
+            { month: 'October', gongInsights: { competitorMentions: { 'Competitor A': 32, 'Competitor B': 22, 'Competitor C': 15 } } },
+            { month: 'November', gongInsights: { competitorMentions: { 'Competitor A': 29, 'Competitor B': 19, 'Competitor C': 13 } } },
+            { month: 'December', gongInsights: { competitorMentions: { 'Competitor A': 35, 'Competitor B': 25, 'Competitor C': 18 } } },
+        ];
+
+        // Aggregate competitor mentions for the year
+        const competitorTotals = annualSalesData.reduce((acc, data) => {
+            const mentions = data.gongInsights.competitorMentions;
+            for (const competitor in mentions) {
+                if (acc[competitor]) {
+                    acc[competitor] += mentions[competitor];
+                } else {
+                    acc[competitor] = mentions[competitor];
+                }
+            }
+            return acc;
+        }, {});
+
+        // Chart.js Visualization
+        const ctx = document.getElementById('gongInsightsChart').getContext('2d');
+        const labels = Object.keys(competitorTotals);
+        const data = Object.values(competitorTotals);
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Total Mentions',
+                    data: data,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Total Competitor Mentions in Calls (Annual)',
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

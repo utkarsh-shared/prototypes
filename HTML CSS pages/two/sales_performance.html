@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Performance Overview</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 2rem;
+        }
+        .chart-container {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 90%;
+            max-width: 1000px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sales Performance Overview</h1>
+
+    <div class="chart-container">
+        <canvas id="salesPerformanceChart"></canvas>
+    </div>
+
+    <script>
+        // Mock Data (Enriched from CRM & Gong)
+        const annualSalesData = [
+            { month: 'January', totalRevenue: 250000, averageDealSize: 25000 },
+            { month: 'February', totalRevenue: 280000, averageDealSize: 26000 },
+            { month: 'March', totalRevenue: 320000, averageDealSize: 28000 },
+            { month: 'April', totalRevenue: 300000, averageDealSize: 27000 },
+            { month: 'May', totalRevenue: 350000, averageDealSize: 30000 },
+            { month: 'June', totalRevenue: 380000, averageDealSize: 31000 },
+            { month: 'July', totalRevenue: 400000, averageDealSize: 32000 },
+            { month: 'August', totalRevenue: 390000, averageDealSize: 31500 },
+            { month: 'September', totalRevenue: 420000, averageDealSize: 33000 },
+            { month: 'October', totalRevenue: 430000, averageDealSize: 34000 },
+            { month: 'November', totalRevenue: 410000, averageDealSize: 32500 },
+            { month: 'December', totalRevenue: 450000, averageDealSize: 35000 },
+        ];
+
+        // Chart.js Visualization
+        const ctx = document.getElementById('salesPerformanceChart').getContext('2d');
+        const labels = annualSalesData.map(data => data.month);
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Total Revenue ($)',
+                        data: annualSalesData.map(data => data.totalRevenue),
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgb(75, 192, 192)',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Average Deal Size ($)',
+                        data: annualSalesData.map(data => data.averageDealSize),
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        borderWidth: 1,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Revenue and Average Deal Size',
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
