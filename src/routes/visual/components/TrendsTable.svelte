@@ -12,7 +12,7 @@
       <Table.Head>Intent Type</Table.Head>
       <Table.Head>Name</Table.Head>
       <Table.Head class="text-right">Volume</Table.Head>
-      <Table.Head class="text-right">Trend</Table.Head>
+      <Table.Head class="text-right">% Change</Table.Head>
     </Table.Row>
   </Table.Header>
   <Table.Body>
